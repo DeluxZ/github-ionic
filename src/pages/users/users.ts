@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
+import { LoginPage } from '../login/login';
 import { UserDetailsPage } from '../user-details/user-details';
 
 import { User } from '../../models/user';
 
+import { AuthData } from '../../providers/auth-data';
 import { GithubUsers } from '../../providers/github-users';
 
 @Component({
@@ -15,7 +17,7 @@ export class UsersPage {
   users: User[];
   originalUsers: User[];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private githubUsers: GithubUsers) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public authData: AuthData, private githubUsers: GithubUsers) {
     githubUsers.load().subscribe(users => {
       this.users = users;
       this.originalUsers = users;
@@ -38,6 +40,12 @@ export class UsersPage {
         this.users = users
       });
     }
+  }
+
+  logOut() {
+    this.authData.logoutUser().then(() => {
+      this.navCtrl.setRoot(LoginPage);
+    });
   }
 
   ionViewDidLoad() {
