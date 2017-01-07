@@ -5,6 +5,7 @@ import { MyApp } from './app.component';
 import { SignupPage } from '../pages/signup/signup';
 import { LoginPage } from '../pages/login/login';
 import { ResetPasswordPage } from '../pages/reset-password/reset-password';
+import { ProfilePage } from '../pages/profile/profile';
 import { UsersPage } from '../pages/users/users';
 import { ReposPage } from '../pages/repos/repos';
 import { OrganisationsPage } from '../pages/organisations/organisations';
@@ -20,6 +21,7 @@ import { GithubUsers } from '../providers/github-users';
     SignupPage,
     LoginPage,
     ResetPasswordPage,
+    ProfilePage,
     UsersPage,
     ReposPage,
     OrganisationsPage,
@@ -34,13 +36,14 @@ import { GithubUsers } from '../providers/github-users';
     SignupPage,
     LoginPage,
     ResetPasswordPage,
+    ProfilePage,
     UsersPage,
     ReposPage,
     OrganisationsPage,
     UserDetailsPage
   ],
   providers: [
-    { provide: ErrorHandler, useClass: IonicErrorHandler }, 
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
     AuthData,
     ProfileData,
     GithubUsers

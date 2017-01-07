@@ -3,15 +3,16 @@ import { Component, ViewChild } from '@angular/core';
 import { Platform, MenuController, Nav } from 'ionic-angular';
 
 import { StatusBar, Splashscreen } from 'ionic-native';
+import { Config } from '../config/dev.config';
 
 import firebase from 'firebase';
 
 import { LoginPage } from '../pages/login/login';
-import { ProfilePage } from  '../pages/profile/profile';
+import { ProfilePage } from '../pages/profile/profile';
 import { UsersPage } from '../pages/users/users';
 import { ReposPage } from '../pages/repos/repos';
 import { OrganisationsPage } from '../pages/organisations/organisations';
-import { UserDetailsPage } from '../pages/user-details/user-details';
+//import { UserDetailsPage } from '../pages/user-details/user-details';
 
 @Component({
   templateUrl: 'app.html'
@@ -42,13 +43,7 @@ export class MyApp {
   }
 
   initializeApp() {
-    firebase.initializeApp({
-      apiKey: "",
-      authDomain: "",
-      databaseURL: "",
-      storageBucket: "",
-      messagingSenderId: ""
-    });
+    firebase.initializeApp(Config.firebaseConfig);
 
     this.platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.

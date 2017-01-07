@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { FormBuilder, Validators, FormGroup, FormControl } from '@angular/forms';
-
-import { NavController, LoadingController, AlertController, NavParams } from 'ionic-angular';
+import { NavController, LoadingController, Loading, AlertController, NavParams } from 'ionic-angular';
+import { FormBuilder, Validators } from '@angular/forms';
 
 import { AuthData } from '../../providers/auth-data';
+
 import { SignupPage } from '../signup/signup';
 import { UsersPage } from '../users/users';
 import { ResetPasswordPage } from '../reset-password/reset-password';
@@ -17,7 +17,7 @@ export class LoginPage {
   emailChanged: boolean = false;
   passwordChanged: boolean = false;
   submitAttempt: boolean = false;
-  loading: any;
+  loading: Loading;
 
   constructor(public navCtrl: NavController, public authData: AuthData, public formBuilder: FormBuilder, public alertCtrl: AlertController, public loadingCtrl: LoadingController, public navParams: NavParams) {
     /**
@@ -26,14 +26,10 @@ export class LoginPage {
      *
      * I set the password's min length to 6 characters because that's Firebase's default, feel free to change that.
      */
-    this.loginForm = new FormGroup({
-      email: new FormControl('', Validators.required),
-      password: new FormControl('', [Validators.minLength(6), Validators.required])
+    this.loginForm = formBuilder.group({
+      email: ['', Validators.compose([Validators.required])],
+      password: ['', Validators.compose([Validators.minLength(6), Validators.required])]
     });
-  }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad LoginPage');
   }
 
   /**
@@ -65,10 +61,11 @@ export class LoginPage {
         });
       });
 
-      this.loading = this.loadingCtrl.create({
-        dismissOnPageChange: true,
-      });
-      this.loading.present();
+      // TODO: Fix this bug when fixed in ionic <-- https://github.com/driftyco/ionic/issues/9589#issuecomment-268561129  
+      //this.loading = this.loadingCtrl.create({
+      //dismissOnPageChange: true,
+      //});
+      //this.loading.present();
     }
   }
 
@@ -86,6 +83,9 @@ export class LoginPage {
 
   goToResetPassword() {
     this.navCtrl.push(ResetPasswordPage);
+  }
+
+  ionViewDidLoad() {
   }
 
 }

@@ -27,8 +27,16 @@ plugins/
 plugins/android.json
 plugins/ios.json
 www/
+platforms/
+plugins/
+plugins/android.json
+plugins/ios.json
+www/
 $RECYCLE.BIN/
 
 .DS_Store
 Thumbs.db
 UserInterfaceState.xcuserstate
+
+# App specific ignores
+src/config/*.config.ts

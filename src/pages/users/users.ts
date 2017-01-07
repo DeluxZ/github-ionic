@@ -21,6 +21,8 @@ export class UsersPage {
     githubUsers.load().subscribe(users => {
       this.users = users;
       this.originalUsers = users;
+    }, () => {
+      console.log("error");
     });
   }
 
@@ -49,7 +51,7 @@ export class UsersPage {
   }
 
   ionViewDidLoad() {
-    console.log('Hello Users Page');
+
   }
 
 }
