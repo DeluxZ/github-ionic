@@ -4,6 +4,7 @@ import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
 
 import { User } from '../models/user';
+import { Repo } from '../models/repo';
 
 @Injectable()
 export class GithubUsers {
@@ -23,6 +24,17 @@ export class GithubUsers {
   loadDetails(login: string): Observable<User> {
     return this.http.get(`${this.githubApiUrl}/users/${login}`)
       .map(res => <User>res.json());
+  }
+
+  // Get the repositories by providing login
+  loadRepos(login: string): Observable<Repo[]> {
+    return this.http.get(`${this.githubApiUrl}/users/${login}/repos`)
+      .map(res => <Repo[]>res.json());
+  }
+
+  loadRepoDetails(login: string, repo: string): Observable<Repo> {
+    return this.http.get(`${this.githubApiUrl}/repos/${login}/${repo}`)
+      .map(res => <Repo>res.json());
   }
 
   // Search for github users

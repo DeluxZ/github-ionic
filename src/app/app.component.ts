@@ -10,9 +10,6 @@ import firebase from 'firebase';
 import { LoginPage } from '../pages/login/login';
 import { ProfilePage } from '../pages/profile/profile';
 import { UsersPage } from '../pages/users/users';
-import { ReposPage } from '../pages/repos/repos';
-import { OrganisationsPage } from '../pages/organisations/organisations';
-//import { UserDetailsPage } from '../pages/user-details/user-details';
 
 @Component({
   templateUrl: 'app.html'
@@ -36,8 +33,8 @@ export class MyApp {
     // set our app's pages
     this.pages = [
       { title: 'Users', component: UsersPage },
-      { title: 'Repos', component: ReposPage },
-      { title: 'Organisations', component: OrganisationsPage },
+      //{ title: 'Repos', component: ReposPage },
+      //{ title: 'Organisations', component: OrganisationsPage },
       { title: 'Profile', component: ProfilePage }
     ];
   }

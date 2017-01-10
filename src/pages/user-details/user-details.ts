@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
+import { ReposPage } from '../repos/repos';
+
 import { User } from '../../models/user';
 
 import { GithubUsers } from '../../providers/github-users';
@@ -18,6 +20,10 @@ export class UserDetailsPage {
     githubUsers.loadDetails(this.login).subscribe(user => {
       this.user = user;
     });
+  }
+
+  goToRepos(login: string) {
+    this.navCtrl.push(ReposPage, { login });
   }
 
   ionViewDidLoad() {
