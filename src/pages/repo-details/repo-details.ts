@@ -1,31 +1,29 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
-import { ReposPage } from '../repos/repos';
-
-import { User } from '../../models/user';
+import { Repo } from '../../models/repo';
 
 import { GithubUsers } from '../../providers/github-users';
 
 @Component({
-  selector: 'page-user-details',
-  templateUrl: 'user-details.html'
+  selector: 'page-repo-details',
+  templateUrl: 'repo-details.html'
 })
-export class UserDetailsPage {
-  user: User;
+export class RepoDetailsPage {
   login: string;
+  repoName: string;
+  repo: Repo;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private githubUsers: GithubUsers) {
     this.login = navParams.get('login');
-    githubUsers.loadDetails(this.login).subscribe(user => {
-      this.user = user;
+    this.repoName = navParams.get('repo');
+    this.githubUsers.loadRepoDetails(this.login, this.repoName).subscribe(repo => {
+      console.log(repo);
+      this.repo = repo;
     });
-  }
-
-  goToRepos(login: string) {
-    this.navCtrl.push(ReposPage, { login });
   }
 
   ionViewDidLoad() {
   }
+
 }

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
+import { RepoDetailsPage } from '../../pages/repo-details/repo-details';
 import { Repo } from '../../models/repo';
 
 import { GithubUsers } from '../../providers/github-users';
@@ -12,22 +13,38 @@ import { GithubUsers } from '../../providers/github-users';
 export class ReposPage {
   repos: Repo[];
   login: string;
-  repoName: string;
+  page: number = 1;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private githubUsers: GithubUsers) {
     this.login = navParams.get('login');
-    githubUsers.loadRepos(this.login).subscribe(repos => {
+    githubUsers.loadRepos(this.login, this.page).subscribe(repos => {
       this.repos = repos;
+      this.page++;
     });
   }
 
-  goToDetails(user: string, repo: string) {
-    console.log(user);
-    console.log(repo);
+  goToDetails(login: string, repo: string) {
+    this.navCtrl.push(RepoDetailsPage, { login, repo });
+  }
+
+  doInfinite(infiniteScroll) {
+    setTimeout(() => {
+      this.githubUsers.loadRepos(this.login, this.page).subscribe(repos => {
+        if (repos.length >= 1) {
+          for (let repo of repos) {
+            this.repos.push(repo);
+          }
+          this.page++;
+        } else {
+          infiniteScroll.enable(false);
+        }
+      });
+
+      infiniteScroll.complete();
+    }, 1000);
   }
 
   ionViewDidLoad() {
-    console.log('Hello Repos Page');
   }
 
 }

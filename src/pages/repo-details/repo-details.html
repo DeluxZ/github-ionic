@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button icon-only menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      {{repo?.full_name}}
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-label>Name</ion-label>
+      <ion-input type="text" value="{{repo?.name}}" disabled></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>URL</ion-label>
+      <ion-input type="text" value="{{repo?.html_url}}" disabled></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Watchers</ion-label>
+      <ion-input type="text" value="{{repo?.watchers_count}}" disabled></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Subscribers</ion-label>
+      <ion-input type="text" value="{{repo?.subscribers_count}}" disabled></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Stars</ion-label>
+      <ion-input type="text" value="{{repo?.stargazers_count}}" disabled></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Open issues</ion-label>
+      <ion-input type="text" value="{{repo?.open_issues_count}}" disabled></ion-input>
+    </ion-item>
+
+  </ion-list>
+</ion-content>

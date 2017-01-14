@@ -27,8 +27,8 @@ export class GithubUsers {
   }
 
   // Get the repositories by providing login
-  loadRepos(login: string): Observable<Repo[]> {
-    return this.http.get(`${this.githubApiUrl}/users/${login}/repos`)
+  loadRepos(login: string, page: number): Observable<Repo[]> {
+    return this.http.get(`${this.githubApiUrl}/users/${login}/repos?page=${page}`)
       .map(res => <Repo[]>res.json());
   }
 
