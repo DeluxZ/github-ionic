@@ -50,4 +50,10 @@ export class GithubUsers {
       .map(res => <User[]>res.json());
   }
 
+  // Get the users the user is following
+  loadFollowing(login: string, page: number = 1): Observable<User[]> {
+    return this.http.get(`${this.githubApiUrl}/users/${login}/following?page=${page}`)
+      .map(res => <User[]>res.json());
+  }
+
 }

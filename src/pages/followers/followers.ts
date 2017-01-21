@@ -20,7 +20,7 @@ export class FollowersPage {
     githubUsers.loadFollowers(this.login).subscribe(users => {
       this.users = users;
       this.page++;
-    })
+    });
   }
 
   goToDetails(login: string) {
