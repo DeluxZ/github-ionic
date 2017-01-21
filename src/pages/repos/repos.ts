@@ -44,7 +44,7 @@ export class ReposPage {
       });
 
       infiniteScroll.complete();
-    }, 1000);
+    }, 2000);
   }
 
   ionViewDidLoad() {

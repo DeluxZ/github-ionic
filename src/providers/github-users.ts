@@ -27,11 +27,12 @@ export class GithubUsers {
   }
 
   // Get the repositories by providing login
-  loadRepos(login: string, page: number): Observable<Repo[]> {
+  loadRepos(login: string, page: number = 1): Observable<Repo[]> {
     return this.http.get(`${this.githubApiUrl}/users/${login}/repos?page=${page}`)
       .map(res => <Repo[]>res.json());
   }
 
+  // Get repository details
   loadRepoDetails(login: string, repo: string): Observable<Repo> {
     return this.http.get(`${this.githubApiUrl}/repos/${login}/${repo}`)
       .map(res => <Repo>res.json());
@@ -41,6 +42,12 @@ export class GithubUsers {
   searchUsers(searchParam: string): Observable<User[]> {
     return this.http.get(`${this.githubApiUrl}/search/users?q=${searchParam}`)
       .map(res => <User[]>res.json().items);
+  }
+
+  // Get the followers of an user
+  loadFollowers(login: string, page: number = 1): Observable<User[]> {
+    return this.http.get(`${this.githubApiUrl}/users/${login}/followers?page=${page}`)
+      .map(res => <User[]>res.json());
   }
 
 }
