@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
+import { FollowersPage } from '../followers/followers';
+import { FollowingPage } from '../following/following';
 import { ReposPage } from '../repos/repos';
+import { GistPage } from '../gist/gist';
 
 import { User } from '../../models/user';
 
@@ -22,8 +25,20 @@ export class UserDetailsPage {
     });
   }
 
+  goToFollowers(login: string) {
+    this.navCtrl.push(FollowersPage, { login });
+  }
+
+  goToFollowing(login: string) {
+    this.navCtrl.push(FollowingPage, { login });
+  }
+
   goToRepos(login: string) {
     this.navCtrl.push(ReposPage, { login });
+  }
+
+  goToGists(login: string) {
+    this.navCtrl.push(GistPage, { login });
   }
 
   ionViewDidLoad() {

@@ -6,11 +6,11 @@
 
 <ion-content>
   <ion-list>
-    <button ion-item>
+    <button ion-item (click)="goToFollowers(login)">
       Followers
       <ion-badge item-right>{{user?.followers}}</ion-badge>
     </button>
-    <button ion-item>
+    <button ion-item (click)="goToFollowing(login)">
       Following
       <ion-badge item-right>{{user?.following}}</ion-badge>
     </button>
