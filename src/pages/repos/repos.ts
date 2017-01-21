@@ -30,10 +30,13 @@ export class ReposPage {
   doInfinite(infiniteScroll) {
     setTimeout(() => {
       this.githubUsers.loadRepos(this.login, this.page).subscribe(repos => {
-        if (repos.length >= 1) {
+        if (repos.length > 0) {
           for (let repo of repos) {
             this.repos.push(repo);
           }
+        }
+
+        if (repos.length == 30) {
           this.page++;
         } else {
           infiniteScroll.enable(false);

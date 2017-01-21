@@ -18,7 +18,6 @@ export class RepoDetailsPage {
     this.login = navParams.get('login');
     this.repoName = navParams.get('repo');
     this.githubUsers.loadRepoDetails(this.login, this.repoName).subscribe(repo => {
-      console.log(repo);
       this.repo = repo;
     });
   }
