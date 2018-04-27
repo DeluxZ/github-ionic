@@ -4,16 +4,15 @@
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title>
-      {{login}}'s gists
+      {{login}}'s gists - gist name
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
   <ion-list>
-    <button ion-item *ngFor="let gist of gists" (click)="goToDetails(gist.id)">
-      <h2>{{ gist.description || gist.id }}</h2>
-      <ion-badge item-right>{{gist.fileCount}}</ion-badge>
+    <button ion-item>
+      <h2>gist name - files </h2>
     </button>
   </ion-list>
 

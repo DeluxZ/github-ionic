@@ -5,6 +5,7 @@ import 'rxjs/add/operator/map';
 
 import { User } from '../models/user';
 import { Repo } from '../models/repo';
+import { Gist } from '../models/gist';
 
 @Injectable()
 export class GithubUsers {
@@ -54,6 +55,12 @@ export class GithubUsers {
   loadFollowing(login: string, page: number = 1): Observable<User[]> {
     return this.http.get(`${this.githubApiUrl}/users/${login}/following?page=${page}`)
       .map(res => <User[]>res.json());
+  }
+
+  // Get the users gists
+  loadGists(login: string, page: number = 1): Observable<Gist[]> {
+    return this.http.get(`${this.githubApiUrl}/users/${login}/gists?page=${page}`)
+      .map(res => <Gist[]>res.json());
   }
 
 }

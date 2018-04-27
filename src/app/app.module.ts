@@ -6,6 +6,7 @@ import { MyApp } from './app.component';
 import { FollowersPage } from '../pages/followers/followers';
 import { FollowingPage } from '../pages/following/following';
 import { GistPage } from '../pages/gist/gist';
+import { GistDetailsPage } from '../pages/gist-details/gist-details';
 import { LoginPage } from '../pages/login/login';
 import { OrganisationsPage } from '../pages/organisations/organisations';
 import { ProfilePage } from '../pages/profile/profile';
@@ -27,6 +28,7 @@ import { ProfileData } from '../providers/profile-data';
     FollowersPage,
     FollowingPage,
     GistPage,
+    GistDetailsPage,
     LoginPage,
     OrganisationsPage,
     ProfilePage,
@@ -46,6 +48,7 @@ import { ProfileData } from '../providers/profile-data';
     FollowersPage,
     FollowingPage,
     GistPage,
+    GistDetailsPage,
     LoginPage,
     OrganisationsPage,
     ProfilePage,
